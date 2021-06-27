@@ -4,4 +4,4 @@ For low-dimensional systems with weak spin orbit coupling (SOC), other interacti
 
 The code works by continuously increasing the lattice size until it converges upon an energy thus reaching the infinite-limit and realistic crystal sizes.
 
-## Currently under development
+## Currently under development...
