@@ -6,6 +6,7 @@ struct Lattice <: AbstractLattice
 	UnitCell::AbstractUnitCell
 	Dimension::Int64
 	LatticeSites::Array{Any, 1}
+	Length::Int64
 end
 
 
@@ -16,5 +17,5 @@ function CreateLattice(UnitCell::AbstractUnitCell, dimension::Int64)
 			append!(LatticeSites, [[s[1]+i, s[2]+i] for s in UnitCell.sites])
 		end
 	end
-	return Lattice(UnitCell, dimension, LatticeSites)
+	return Lattice(UnitCell, dimension, LatticeSites, length(LatticeSites))
 end
