@@ -17,5 +17,6 @@ function CreateLattice(UnitCell::AbstractUnitCell, dimension::Int64)
 			append!(LatticeSites, [[s[1]+i, s[2]+i] for s in UnitCell.sites])
 		end
 	end
+	unique!(LatticeSites)
 	return Lattice(UnitCell, dimension, LatticeSites, length(LatticeSites))
 end

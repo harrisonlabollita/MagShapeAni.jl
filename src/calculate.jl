@@ -12,11 +12,11 @@ function constants(Physical::PhysicalConstants)
 end
 
 function calculate(Lattice::AbstractLattice)
-	val::Float64 = 0
+	val::Float64 = 0.0
 	sites = Lattice.LatticeSites
 	for i ∈ 1:Lattice.Length
 		for j ∈ 1:Lattice.Length
-			if i ≠ j
+			if i != j
 				num::Float64 = ((sites[i] - sites[j])[1])^2
 				deno::Float64 = norm(sites[i] - sites[j])^5
 				val += num/deno
@@ -26,7 +26,7 @@ function calculate(Lattice::AbstractLattice)
 	return val/(Lattice.Length)
 end
 
-function run(Physical::PhysicalConstants, UnitCell::AbstractUnitCell, 
+function run(Physical::PhysicalConstants, UnitCell::AbstractUnitCell;
 	tol::Float64 = 1e-3, max::Int64=100, step::Int64=1, verbose=true) 
 
 	dims = collect(1:step:max)
@@ -39,7 +39,7 @@ function run(Physical::PhysicalConstants, UnitCell::AbstractUnitCell,
 	prefactor =  constants(Physical)
 	for (lin, d) ∈ enumerate(dims)
 		lattice	  = CreateLattice(UnitCell, d)
-		ani[lin]  = prefactor * calculate(lattice)
+		ani[lin]  = calculate(lattice)
 		if verbose
 			println("      $(d)            |      $(ani[lin])     ")
 		end
