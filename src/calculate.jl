@@ -39,7 +39,7 @@ function run(Physical::PhysicalConstants, UnitCell::AbstractUnitCell;
 	prefactor =  constants(Physical)
 	for (lin, d) ∈ enumerate(dims)
 		lattice	  = CreateLattice(UnitCell, d)
-		ani[lin]  = calculate(lattice)
+		ani[lin]  = prefactor * calculate(lattice)
 		if verbose
 			println("      $(d)            |      $(ani[lin])     ")
 		end
