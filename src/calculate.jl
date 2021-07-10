@@ -14,13 +14,11 @@ end
 function calculate(Lattice::AbstractLattice)
 	val::Float64 = 0.0
 	sites = Lattice.LatticeSites
-	for i ∈ 1:Lattice.Length
-		for j ∈ 1:Lattice.Length
-			if i != j
-				num::Float64 = ((sites[i] - sites[j])[1])^2
-				deno::Float64 = norm(sites[i] - sites[j])^5
-				val += num/deno
-			end
+	for i ∈ 1:Lattice.Length, j ∈ 1:Lattice.Length
+		if i != j
+			num::Float64 = ((sites[i] - sites[j])[1])^2
+			deno::Float64 = norm(sites[i] - sites[j])^5
+			val += num/deno
 		end
 	end
 	return val/(Lattice.Length)
