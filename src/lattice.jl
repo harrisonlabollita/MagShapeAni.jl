@@ -13,7 +13,7 @@ end
 function CreateLattice(UnitCell::AbstractUnitCell, dimension::Int64)
 	LatticeSites = []
 	for i = 0:dimension, j = 0:dimension
-		append!(LatticeSites, [[s[1]+i, s[2]+i] for s in UnitCell.sites])
+		append!(LatticeSites, [UnitCell.toCartesian * [s[1]+i, s[2]+j] for s in UnitCell.sites])
 	end
 	unique!(LatticeSites)
 	return Lattice(UnitCell, dimension, LatticeSites, length(LatticeSites))

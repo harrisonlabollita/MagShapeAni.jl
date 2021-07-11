@@ -1,7 +1,9 @@
+using Plots
 using LinearAlgebra
 include("physical.jl")
 include("unitcell.jl")
 include("lattice.jl")
+include("plot.jl")
 
 function constants(Physical::PhysicalConstants)
 	a                        = Physical.a
