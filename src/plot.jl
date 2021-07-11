@@ -9,8 +9,13 @@ function plot_lattice(lattice::AbstractLattice)
 	scatter(xpos, ypos, legend=false, markersize=3, grid=false)
 end
 
-function plot_msa(dims, ani)
-	plot(dims, ani, markersize = 3, legend=false, grid=false)
+function plot_msa(dims, ani; label=nothing)
+	if isnothing(label)
+		plot!(dims, ani, markersize = 3, legend=false, grid=false)
+	else
+		plot!(dims, ani, markersize = 3, label=label, grid=false)
+	end
 	xlabel!("N (sites)")
 	ylabel!("MSA Energy (μeV)")
 end
+
